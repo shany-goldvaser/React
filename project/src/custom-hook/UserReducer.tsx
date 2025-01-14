@@ -1,24 +1,23 @@
 import { Action } from "../types/Action"
 import { User } from "../types/User"
-const UserReducer = (state: User, action: Action):User => {
+const UserReducer = (state: User, action: Action): User => {
     switch (action.type) {
         case 'CREATE':
             {
                 return {
                     ...state,
-                    FirstName: action.data.FirstName || state.FirstName,
-                    LastName: action.data.LastName || state.LastName,
-                    PassWord: action.data.PassWord || state.PassWord,
+                    Email: action.data.Email,
+                    PassWord: action.data.PassWord,
                 };
             }
         case 'UPDATE':
             {
-                return  {...state,...action.data}   
+                return {...action.data }
             }
         case 'DELETE':
-            state.FirstName='';
-            state.LastName='';
-            state.PassWord='';
+            state.FirstName = '';
+            state.LastName = '';
+            state.PassWord = '';
             return state;
 
         default:

@@ -5,7 +5,8 @@ import Login from "./Login";
 import Button from "@mui/material/Button/Button";
 import Logged from "./logged";
 import { Box, Grid2 } from "@mui/material";
-const user: User = {}
+import { RouterProvider } from "react-router";
+import { router } from "../router";
 export const style = {
     position: 'absolute',
     top: '50%',
@@ -19,28 +20,51 @@ export const style = {
     px: 4,
     pb: 3,
 };
-export const userContext = createContext<User>(user);
+const us: User = {
+    Id: 0,
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    PassWord: '',
+    Phone: '',
+    Adress: ''
+}
+export const UserContext = createContext<{
+    user: User;
+    setUser: React.Dispatch<React.SetStateAction<User>>;
+}>
+    ({
+        user: us,
+        setUser: () => { }
+    });
 export const reducerLoginContext = createContext<Function>(() => { });
 const HomePage = () => {
-    const [IsLogin, setIsLogin] = useState(false);
-    const [IsLogged, setIsLogged] = useState(false);
-    const [user, userDispatch] = useReducer(UserReducer, {} as User)
+    const [IsEnter, setIsEnter] = useState(false);
+    const [IsLoggedOrRegistered, setIsLoggedRegistered] = useState(false);
+    const [IsRegister, setRegister] = useState(false);
+    const [, userDispatch] = useReducer(UserReducer, {} as User)
+    const [user, setUser] = useState<User>(us);
     return (<>
-
         <Box sx={{ flexGrow: 1 }}>
             <Grid2 container spacing={2}>
-            <Grid2 size={4} sx={{ padding: '16px' }} >
-                    <userContext.Provider value={user}>
+                <Grid2 size={4} sx={{ padding: '16px' }} >
+                    <UserContext.Provider value={{ user, setUser }}>
                         <reducerLoginContext.Provider value={userDispatch}>
-                            {!IsLogin ?
-                                (<><Button color="primary" onClick={() => { setIsLogin(true) }}>Login</Button></>)
-                                : <Login setLogged={setIsLogged} />}
-                            {IsLogged && <Logged />}
+                            {!IsEnter ?
+                                (
+                                    <><Button color="secondary" variant="contained" sx={{ margin: '1px' }} onClick={() => { setIsEnter(true) }}>Login</Button>
+                                        <Button color="secondary" variant="contained" sx={{ margin: '1px' }} onClick={() => { setIsEnter(true), setRegister(true) }}>Register</Button></>
+                                )
+                                : <Login setLogged={setIsLoggedRegistered} IsRegister={IsRegister} />}
+
+                            {IsLoggedOrRegistered && <Logged />}
                         </reducerLoginContext.Provider>
-                    </userContext.Provider>
+                    </UserContext.Provider>
 
                 </Grid2>
-                <Grid2 size={8} sx={{textAlign:"center"}}><h1>HomePage</h1></Grid2>
+
+                    <RouterProvider router={router} />
+
             </Grid2>
         </Box>
 

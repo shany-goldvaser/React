@@ -1,8 +1,8 @@
 import Avatar from "@mui/material/Avatar/Avatar";
 import { useContext, useState } from "react";
-import { userContext } from "./HomePage";
 import Update from "./Update";
 import { Button } from "@mui/material";
+import { UserContext } from "./HomePage";
 const stringToColor = (string: string) => {
     let hash = 0;
     let i;
@@ -32,13 +32,17 @@ const stringAvatar = (name: string) => {
 }
 
 const logged = () => {
-    const user = useContext(userContext);
+    const { user, setUser } = useContext(UserContext);
     const [IsUpdate, setIsUpdate] = useState(false);
-    return (<>
-        <Avatar {...stringAvatar(user.FirstName + ' ' + user.LastName)} />
-        <h3>hello to {user.FirstName + ' ' + user.LastName}</h3>
-        <Button onClick={() => { setIsUpdate(true) }}>Update</Button>
-        {IsUpdate && <Update/>}
+    console.log(user);
+        return (<>
+        {(user.FirstName!==undefined) &&
+        <>
+            <Avatar {...stringAvatar(user.FirstName + ' ' + user.LastName)} />
+            <h4>hello to {user.FirstName + ' ' + user.LastName}</h4>
+        </>}
+        <Button color="secondary" variant="contained" onClick={() => { setIsUpdate(true) }}>Update</Button>
+        {IsUpdate && <Update setUpdate={setIsUpdate} />}
     </>)
 }
 export default logged
