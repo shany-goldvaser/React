@@ -85,12 +85,12 @@ const update = ({ setUpdate }: { setUpdate: Function }) => {
         <Modal open={open}>
             <Box sx={style}>
                 <form onSubmit={handleSubmit}>
-                    <TextField label='firstName' inputRef={firstNameRef} required />
-                    <TextField label='lastName' inputRef={lastNameRef} required />
+                    <TextField label='firstName' inputRef={firstNameRef} required value={user.FirstName}/>
+                    <TextField label='lastName' inputRef={lastNameRef} required value={user.LastName}/>
                     {/* <TextField label='password' inputRef={passwordRef} type='password' /> */}
-                    <TextField label='email' inputRef={emailRef} type="email" />
-                    <TextField label='address' inputRef={addressRef} />
-                    <TextField label='phone' inputRef={phoneRef} type="tel" />
+                    <TextField label='email' inputRef={emailRef} type="email" value={user.Email}/>
+                    <TextField label='address' inputRef={addressRef} value={user.Adress} />
+                    <TextField label='phone' inputRef={phoneRef} type="tel" value={user.Phone}/>
                     <Button type="submit" color="secondary" variant="contained">update</Button>
                 </form>
             </Box>
