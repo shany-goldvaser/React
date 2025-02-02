@@ -10,9 +10,9 @@ export default () => {
     const recipes = useSelector((state: RootState) => state.recipes.recipes);
     const recipeStatus = useSelector((state: RootState) => state.recipes.status);
     const error = useSelector((state: RootState) => state.recipes.error);
-    const [ user, ] =  useContext(reducerLoginContext);
+    const [user,] = useContext(reducerLoginContext);
     console.log(user);
-    const isUserLoggedIn = user.Id !== 0 && user.Id!==undefined && user.Id!==null;    
+    const isUserLoggedIn = user.Id !== 0 && user.Id !== undefined && user.Id !== null;
     useEffect(() => {
         if (recipeStatus === 'idle') {
             dispatch(fetchRecipes());
@@ -27,35 +27,32 @@ export default () => {
         return <div> Error: {error}</div>;
     }
     return (<>
-        <Drawer variant="permanent" anchor="right"
-           sx={{ height: 'calc(100% - 64px)', top: 64 }}
-        // sx={{ position: "fixed", top: "75px",right: "0px", height: "calc(-72px + 100vh)"}}
-        >
-                <Toolbar   sx={{ backgroundColor: 'secondary.main', color:'white' }}>
-                    <Typography variant="h6">Recipes</Typography>
-                </Toolbar>
+    <Drawer variant="permanent" anchor="right" sx={{ height: 'calc(100% - 64px)', top: 200 }}>
+        <Toolbar sx={{ backgroundColor: 'secondary.main', color: 'white' }}>
+            <Typography variant="h6" component="span" sx={{ color: 'white', textDecoration: 'none' }}>
+                <Link to={'/recipe'} style={{ color: 'inherit', textDecoration: 'none' }}> Recipes</Link>
+            </Typography>
+        </Toolbar>
             <List>
                 {recipes.map((recipe) => (
-                    <ListItem key={recipe.id}>                      
+                    <ListItem key={recipe.id}>
                         <ListItemButton component={Link} to={`/recipe/${recipe.id}`}>
                             <ListItemText color="secondary" primary={recipe.title} />
                         </ListItemButton>
                     </ListItem>
                 ))}
             </List>
-            {isUserLoggedIn &&
-             ( 
-                    <Button 
-                        variant="contained" 
-                        color="secondary" 
-                     component={Link} 
-                        to="/recipe/add-recipe" 
-                        sx={{ margin: 2 }}
-                    >
-                        Add Recipe
-                    </Button>
-                 )}
+            {isUserLoggedIn && (
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    component={Link}
+                    to="/recipe/add-recipe"
+                    sx={{ margin: 2 }}>
+                    Add Recipe
+                </Button>
+            )}
         </Drawer>
-        <Outlet/>
+        <Outlet />
     </>)
 };

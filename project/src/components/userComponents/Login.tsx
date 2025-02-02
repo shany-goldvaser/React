@@ -9,11 +9,9 @@ const Login = ({ setLogged, IsRegister }: { setLogged: Function, IsRegister: boo
     const passwordRef = useRef<HTMLInputElement>(null)
     const emailRef = useRef<HTMLInputElement>(null)
     const [, userFunc] = useContext(reducerLoginContext);
-    // const { user, setUser } = useContext(UserContext);
     const [open, setOpen] = useState(true);
     const url = 'http://localhost:3000/api/user'
     const handleSubmit = async (e: FormEvent) => {
-
         e.preventDefault();
         try {
             let res;
@@ -56,36 +54,30 @@ const Login = ({ setLogged, IsRegister }: { setLogged: Function, IsRegister: boo
                                 Phone: r.data.user.phone,
                             }
                         });
-                        // setUser({
-                        //     Id: 
-
-                        //     Email: emailRef.current?.value,
-                        //     PassWord: passwordRef.current?.value
-                        // });
                     }
                 });
-            }
-            
+            }           
             setLogged(true)
+            setOpen(false)
         }
         catch (e) {
             setLogged(false)
             if (axios.isAxiosError(e)) {
-                console.log(e);
-                if (e.response && e.response.status === 422) {
-                    alert('user is alerady logged in');
+                if (e.response && e.response.status === 400) {
+                    alert('User already exists try Again');
                 }
                 else if (e.response && e.response.status === 401) {
-                    alert('user is not logged in')
+                    alert('Invalid credentials try Again')
                 }
             } else {
-                console.error('An unexpected error occurred:', e);
+                alert('try Again')
+                console.log('An unexpected error occurred:', e);
             }
         }
         finally {
             emailRef.current!.value = ''
             passwordRef.current!.value = ''
-            setOpen(false)
+
         }
     }
     return (

@@ -2,17 +2,10 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { AsyncThunkConfig } from '../../types/types';
+import { Recipe } from '../../types/Recipe';
 
 // Define the Recipe type
-interface Recipe {
-    id: number;
-    title: string;
-    description: string;
-    products: string[];
-    ingredients: string[];
-    instructions: string[];
-    authorId: string;
-}
+
 
 // Define the initial state type
 interface RecipesState {

@@ -48,6 +48,7 @@ const update = ({ setUpdate }: { setUpdate: Function }) => {
             setUpdate(false)
         }
         catch (e) {
+            alert("user not found!")
             console.log(e);
 
         }
