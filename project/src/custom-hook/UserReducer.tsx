@@ -6,8 +6,7 @@ const UserReducer = (state: User, action: Action): User => {
             {
                 return {
                     ...state,
-                    Email: action.data.Email,
-                    PassWord: action.data.PassWord,
+                    ...action.data
                 };
             }
         case 'UPDATE':

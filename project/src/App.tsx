@@ -1,17 +1,10 @@
-
-// import './App.css'
-
-import { CssBaseline } from "@mui/material"
-import HomePage from "./components/HomePage"
-
+import {  RouterProvider } from "react-router"
+import { router } from "./router"
 
 function App() {
   return (
     <>
-    <CssBaseline />
-
-    <HomePage></HomePage>
-
+       <RouterProvider router={router} />        
     </>
   )
 }

@@ -5,5 +5,5 @@ export type User = {
     Phone?: string,
     Email?: string,
     PassWord?: string,
-    Adress?: string
+    Address?: string
 }
