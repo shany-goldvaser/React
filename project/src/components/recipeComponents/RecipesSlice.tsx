@@ -1,26 +1,12 @@
-// src/recipesSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { AsyncThunkConfig } from '../../types/types';
 import { Recipe } from '../../types/Recipe';
-
-// Define the Recipe type
-
-
-// Define the initial state type
-interface RecipesState {
-    recipes: Recipe[];
-    status: 'idle' | 'loading' | 'succeeded' | 'failed';
-    error: string | null;
-}
-
-// Async thunk to fetch recipes from the API
+import { RecipesState } from '../../types/RecipeState';
 export const fetchRecipes = createAsyncThunk<Recipe[], void, AsyncThunkConfig>('recipes/fetchRecipes', async () => {
-    const response = await axios.get('http://localhost:3000/api/recipes'); // Adjust the URL to your API endpoint
+    const response = await axios.get('http://localhost:3000/api/recipes');
     return response.data;
 });
-
-// Create a slice for recipes
 const RecipesSlice = createSlice({
     name: 'recipes',
     initialState: {

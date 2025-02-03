@@ -56,7 +56,7 @@ const Login = ({ setLogged, IsRegister }: { setLogged: Function, IsRegister: boo
                         });
                     }
                 });
-            }           
+            }
             setLogged(true)
             setOpen(false)
         }
@@ -77,16 +77,17 @@ const Login = ({ setLogged, IsRegister }: { setLogged: Function, IsRegister: boo
         finally {
             emailRef.current!.value = ''
             passwordRef.current!.value = ''
-
         }
     }
     return (
         <Modal open={open}>
             <Box sx={style}>
                 <form onSubmit={handleSubmit}>
-                    <TextField color="secondary" id="Email" label="Email" variant="standard" inputRef={emailRef} required type="email" />
-                    <TextField color="secondary" id="Password" label="Password" variant="standard" inputRef={passwordRef} type="password" required />
-                    <Button type="submit" color="secondary" variant="contained">Submit</Button>
+                    <TextField
+                        color="secondary" id="Email" label="Email" variant="outlined" inputRef={emailRef} required type="email" fullWidth margin="normal" />
+                    <TextField
+                        color="secondary" id="Password" label="Password" variant="outlined" inputRef={passwordRef} type="password" required fullWidth margin="normal" />
+                    <Button type="submit" color="secondary" variant="contained" fullWidth style={{ marginTop: '16px' }}> Submit </Button>
                 </form>
             </Box>
         </Modal>

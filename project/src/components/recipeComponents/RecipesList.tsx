@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from "./Store"
 import { useContext, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { Drawer, Toolbar, Typography, List, ListItem, ListItemText, ListItemButton, Button } from '@mui/material';
+import { Toolbar, Typography, List, ListItem, ListItemText, ListItemButton, Button, Drawer } from '@mui/material';
 import { fetchRecipes } from './RecipesSlice';
 import { reducerLoginContext } from '../HomePage';
 export default () => {
@@ -27,12 +27,13 @@ export default () => {
         return <div> Error: {error}</div>;
     }
     return (<>
-    <Drawer variant="permanent" anchor="right" sx={{ height: 'calc(100% - 64px)', top: 200 }}>
-        <Toolbar sx={{ backgroundColor: 'secondary.main', color: 'white' }}>
-            <Typography variant="h6" component="span" sx={{ color: 'white', textDecoration: 'none' }}>
-                <Link to={'/recipe'} style={{ color: 'inherit', textDecoration: 'none' }}> Recipes</Link>
-            </Typography>
-        </Toolbar>
+
+        <Drawer variant="permanent" anchor="right" sx={{ height: 'calc(100% - 64px)' , marginTop: '60px' }}>
+            <Toolbar sx={{ backgroundColor: 'secondary.main', color: 'white' }}>
+                <Typography variant="h6" component="span" sx={{ color: 'white', textDecoration: 'none' }}>
+                    <Link to={'/recipe'} style={{ color: 'inherit', textDecoration: 'none' }}> Recipes</Link>
+                </Typography>
+            </Toolbar>
             <List>
                 {recipes.map((recipe) => (
                     <ListItem key={recipe.id}>

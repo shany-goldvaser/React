@@ -1,10 +1,10 @@
-import { FormEvent, useContext, useEffect, useRef, useState } from "react"
+import { FormEvent, useContext, useRef, useState } from "react"
 import { reducerLoginContext, style } from "../HomePage";
 import { Modal, Box, TextField, Button } from "@mui/material";
 import axios from "axios";
 
 const update = ({ setUpdate }: { setUpdate: Function }) => {
-    const[user, userFunc] = useContext(reducerLoginContext);
+    const [user, userFunc] = useContext(reducerLoginContext);
     const firstNameRef = useRef<HTMLInputElement>(null)
     const lastNameRef = useRef<HTMLInputElement>(null)
     const passwordRef = useRef<HTMLInputElement>(null)
@@ -17,7 +17,7 @@ const update = ({ setUpdate }: { setUpdate: Function }) => {
 
         e.preventDefault()
         try {
-            const res = await axios.put(
+            await axios.put(
                 url,
                 {
                     firstName: firstNameRef.current?.value,
@@ -60,24 +60,17 @@ const update = ({ setUpdate }: { setUpdate: Function }) => {
                 addressRef.current!.value = '',
                 phoneRef.current!.value = '';
         }
-
-
     }
-    useEffect(() => {
-        console.log('after setuser', user);
-    }, [user]);
-
     return (<>
         <Modal open={open}>
             <Box sx={style}>
                 <form onSubmit={handleSubmit}>
-                    <TextField color="secondary"  label='firstName' inputRef={firstNameRef} required value={user.FirstName}/>
-                    <TextField color="secondary"  label='lastName' inputRef={lastNameRef} required value={user.LastName}/>
-                    {/* <TextField label='password' inputRef={passwordRef} type='password' /> */}
-                    <TextField color="secondary"  label='email' inputRef={emailRef} type="email" value={user.Email}/>
-                    <TextField color="secondary"  label='address' inputRef={addressRef} value={user.Address} />
-                    <TextField color="secondary"  label='phone' inputRef={phoneRef} type="tel" value={user.Phone}/>
-                    <Button color="secondary"  type="submit" variant="contained">update</Button>
+                    <TextField color="secondary" label='First Name' inputRef={firstNameRef} required value={user.FirstName} variant="outlined" fullWidth margin="normal" />
+                    <TextField color="secondary" label='Last Name' inputRef={lastNameRef} required value={user.LastName} variant="outlined" fullWidth margin="normal" />
+                    <TextField color="secondary" label='Email' inputRef={emailRef} type="email" value={user.Email} variant="outlined" fullWidth margin="normal" />
+                    <TextField color="secondary" label='Address' inputRef={addressRef} value={user.Address} variant="outlined" fullWidth margin="normal" />
+                    <TextField color="secondary" label='Phone' inputRef={phoneRef} type="tel" value={user.Phone} variant="outlined" fullWidth margin="normal" />
+                    <Button color="secondary" type="submit" variant="contained" fullWidth style={{ marginTop: '16px' }}>Update</Button>
                 </form>
             </Box>
         </Modal></>)

@@ -1,4 +1,4 @@
-import { RootState } from '../components/recipeComponents/store'
+import { RootState } from '../components/recipeComponents/Store'
 
 export interface AsyncThunkConfig {
     state: RootState;

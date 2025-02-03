@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, Typography, TextField, Button, Box } from '@mui/material';
@@ -9,14 +9,12 @@ import * as yup from 'yup';
 import { RecipeFormData, Recipe } from '../../types/Recipe';
 import { reducerLoginContext } from '../HomePage';
 import { addRecipe } from './RecipesSlice';
-
 const schema = yup.object().shape({
     title: yup.string().required('Title is required'),
     description: yup.string().required('Description is required'),
     instructions: yup.string().required('Instructions are required'),
     ingredients: yup.array().of(yup.string().required('Ingredient is required')).min(1, 'At least one ingredient is required').required('Ingredients are required'),
 });
-
 const AddRecipeForm = () => {
     const { control, handleSubmit, formState: { errors } } = useForm<RecipeFormData>({
         resolver: yupResolver(schema),
@@ -24,8 +22,12 @@ const AddRecipeForm = () => {
     const navigate = useNavigate();
     const [user] = useContext(reducerLoginContext);
     const dispatch = useDispatch();
+    useEffect(() => {
+        if (!user) {
+            navigate('/recipes');
+        }
+    }, [user, navigate]);
     const onSubmit: SubmitHandler<RecipeFormData> = async (data) => {
-        if (!user) return navigate('/recipes');
         const recipeData: Recipe = { authorId: user.Id, ...data, id: 0 };
         try {
             const response = await axios.post('http://localhost:3000/api/recipes', recipeData, {

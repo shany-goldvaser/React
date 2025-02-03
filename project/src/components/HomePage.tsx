@@ -1,6 +1,5 @@
 import { createContext, Dispatch, useState } from "react"
 import { User } from "../types/User"
-
 import Login from "./userComponents/Login";
 import Button from "@mui/material/Button/Button";
 import Logged from "./userComponents/logged";
@@ -22,12 +21,8 @@ export const style = {
 export const reducerLoginContext = createContext<[User, Dispatch<Action>]>([{} as User, () => { }]);
 const HomePage = () => {
     const [IsEnter, setIsEnter] = useState(false);
-    const [IsLoggedOrRegistered, setIsLoggedRegistered] = useState(false);
     const [IsRegister, setRegister] = useState(false);
-
-
     return (
-           
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid2 container spacing={2}>
                         <Grid2 size={4} sx={{ padding: '16px' }} >
@@ -36,12 +31,11 @@ const HomePage = () => {
                                     <Button color="secondary" variant="contained" sx={{ margin: '1px' }} onClick={() => setIsEnter(true)}>Sign In</Button>
                                     <Button color="secondary" variant="contained" sx={{ margin: '1px' }} onClick={() => { setIsEnter(true); setRegister(true); }}>Sign Up</Button>
                                 </>
-                            ) : <Login setLogged={setIsLoggedRegistered} IsRegister={IsRegister} />}
-                            {IsLoggedOrRegistered && <Logged />}
+                            ) : <Login setLogged={setIsEnter} IsRegister={IsRegister} />}
+                            {IsEnter && <Logged />}
                         </Grid2>
                     </Grid2>     
                 </Box>
     );
 };
-
 export default HomePage;
