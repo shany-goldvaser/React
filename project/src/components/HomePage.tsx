@@ -18,7 +18,7 @@ export const style = {
     px: 4,
     pb: 3,
 };
-export const reducerLoginContext = createContext<[User, Dispatch<Action>]>([{} as User, () => { }]);
+export const ReducerLoginContext = createContext<[User, Dispatch<Action>]>([{} as User, () => { }]);
 const HomePage = () => {
     const [IsEnter, setIsEnter] = useState(false);
     const [IsRegister, setRegister] = useState(false);

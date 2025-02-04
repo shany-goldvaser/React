@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { RecipeFormData, Recipe } from '../../types/Recipe';
-import { reducerLoginContext } from '../HomePage';
+import { ReducerLoginContext } from '../HomePage';
 import { addRecipe } from './RecipesSlice';
 const schema = yup.object().shape({
     title: yup.string().required('Title is required'),
@@ -20,7 +20,7 @@ const AddRecipeForm = () => {
         resolver: yupResolver(schema),
     });
     const navigate = useNavigate();
-    const [user] = useContext(reducerLoginContext);
+    const [user] = useContext(ReducerLoginContext);
     const dispatch = useDispatch();
     useEffect(() => {
         if (!user) {

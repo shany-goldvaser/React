@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box/Box"
 import TextField from "@mui/material/TextField/TextField"
-import { reducerLoginContext, style } from "../HomePage"
+import { ReducerLoginContext, style } from "../HomePage"
 import { FormEvent, useContext, useRef, useState } from "react"
 import Button from "@mui/material/Button/Button"
 import { Modal } from "@mui/material"
@@ -8,7 +8,7 @@ import axios, { } from "axios"
 const Login = ({ setLogged, IsRegister }: { setLogged: Function, IsRegister: boolean }) => {
     const passwordRef = useRef<HTMLInputElement>(null)
     const emailRef = useRef<HTMLInputElement>(null)
-    const [, userFunc] = useContext(reducerLoginContext);
+    const [, userFunc] = useContext(ReducerLoginContext);
     const [open, setOpen] = useState(true);
     const url = 'http://localhost:3000/api/user'
     const handleSubmit = async (e: FormEvent) => {

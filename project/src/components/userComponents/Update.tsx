@@ -1,10 +1,10 @@
 import { FormEvent, useContext, useRef, useState } from "react"
-import { reducerLoginContext, style } from "../HomePage";
+import { ReducerLoginContext, style } from "../HomePage";
 import { Modal, Box, TextField, Button } from "@mui/material";
 import axios from "axios";
 
 const update = ({ setUpdate }: { setUpdate: Function }) => {
-    const [user, userFunc] = useContext(reducerLoginContext);
+    const [user, userFunc] = useContext(ReducerLoginContext);
     const firstNameRef = useRef<HTMLInputElement>(null)
     const lastNameRef = useRef<HTMLInputElement>(null)
     const passwordRef = useRef<HTMLInputElement>(null)

@@ -2,7 +2,7 @@ import Avatar from "@mui/material/Avatar/Avatar";
 import { useContext, useState } from "react";
 import Update from "../userComponents/Update"
 import { Button, Typography } from "@mui/material";
-import { reducerLoginContext } from "../HomePage";
+import { ReducerLoginContext } from "../HomePage";
 const stringToColor = (string: string) => {
     let hash = 0;
     let i;
@@ -24,7 +24,7 @@ const stringAvatar = (name: string) => {
     };
 }
 const logged = () => {
-    const [user,] = useContext(reducerLoginContext);
+    const [user,] = useContext(ReducerLoginContext);
     const [IsUpdate, setIsUpdate] = useState(false);
 
     return (

@@ -4,14 +4,13 @@ import { useContext, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Toolbar, Typography, List, ListItem, ListItemText, ListItemButton, Button, Drawer } from '@mui/material';
 import { fetchRecipes } from './RecipesSlice';
-import { reducerLoginContext } from '../HomePage';
+import { ReducerLoginContext } from '../HomePage';
 export default () => {
     const dispatch = useDispatch<AppDispatch>();
     const recipes = useSelector((state: RootState) => state.recipes.recipes);
     const recipeStatus = useSelector((state: RootState) => state.recipes.status);
     const error = useSelector((state: RootState) => state.recipes.error);
-    const [user,] = useContext(reducerLoginContext);
-    console.log(user);
+    const [user,] = useContext(ReducerLoginContext);
     const isUserLoggedIn = user.Id !== 0 && user.Id !== undefined && user.Id !== null;
     useEffect(() => {
         if (recipeStatus === 'idle') {

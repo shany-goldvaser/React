@@ -8,61 +8,6 @@
       "password": "12345",
       "address": "address 1 5",
       "phone": "0548654321"
-    },
-    {
-      "id": 1738456360271,
-      "email": "g@g.g",
-      "password": "g",
-      "firstName": "ggg",
-      "lastName": "ggg",
-      "address": "ggg",
-      "phone": "123465"
-    },
-    {
-      "id": 1738518620830,
-      "email": "a@a.a",
-      "password": "a",
-      "firstName": "aaaaaaaaaaaaaaaaaaaaa",
-      "lastName": "aaaaaaaaaaaaa",
-      "address": "aaaaaaaaaa",
-      "phone": "aaaa"
-    },
-    {
-      "id": 1738519641327,
-      "email": "asd@asd.asd",
-      "password": "asd"
-    },
-    {
-      "id": 1738521374114,
-      "email": "shg5370@g.com",
-      "password": "123456789",
-      "firstName": "שני",
-      "lastName": "גולדוסר",
-      "address": "סמ' יבנה 3",
-      "phone": "0556745370"
-    },
-    {
-      "id": 1738535858198,
-      "email": "sdfg@sdfgg.sf",
-      "password": "dsfdgfdhgf",
-      "firstName": "Html Serializer",
-      "lastName": "jhbjhmn",
-      "address": "a@l.l",
-      "phone": "🥛🥛🥛🥛🥛🥛🥛"
-    },
-    {
-      "id": 1738536237142,
-      "email": "w@w.w",
-      "password": "w",
-      "firstName": "w",
-      "lastName": "w",
-      "address": "w",
-      "phone": "w"
-    },
-    {
-      "id": 1738619762085,
-      "email": "a@a.assa",
-      "password": "aaaa"
     }
   ],
   "recipes": [
@@ -114,72 +59,6 @@
         "240ml boiling water"
       ],
       "instructions": "Preheat the oven to 175°C (350°F). In a large bowl, mix the flour, sugar, cocoa powder, baking powder, and baking soda. Add the eggs, milk, oil, and vanilla extract, and mix until smooth. Gradually add the boiling water and mix until well combined. Pour the batter into a greased baking pan and bake for 30-35 minutes. Let cool before serving."
-    },
-    {
-      "id": 1738512826141,
-      "title": "pizza",
-      "description": " a yami piza to supper🍕🍕🍕🍕🍕🍕🍕🍕🍕",
-      "authorId": "1738456360271",
-      "ingredients": [
-        "🥚",
-        "🛢️"
-      ],
-      "instructions": "look in the book"
-    },
-    {
-      "id": 1738516237797,
-      "title": "milk",
-      "description": "drink a milk",
-      "authorId": "1",
-      "ingredients": [
-        "🥛🥛🥛🥛🥛🥛🥛🥛🥛🥛🥛"
-      ],
-      "instructions": "go to the 🐄🐄🐄🐄🐄🐄🐄🐄🐄🐄🐄🐄🤠🤠🤠🤠🤠🤠🐄🐄🐄🐄🐄🐄🐮🐮🐮🐮🐮🐮🐮🐮🐮🐮"
-    },
-    {
-      "id": 1738518823327,
-      "title": "🍕🍔🍟🌭🍿🧂🧈🥞🧇🍳🥚🥓",
-      "description": "🍦🥧🥣🍝🫕",
-      "authorId": "1738518620830",
-      "ingredients": [
-        "❤️",
-        "🔴",
-        "❤️"
-      ],
-      "instructions": "windows ץ"
-    },
-    {
-      "id": 1738519713458,
-      "title": "i have no idea",
-      "description": "i am board",
-      "authorId": "1738519641327",
-      "ingredients": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9"
-      ],
-      "instructions": "what can i do i have a lot of h.w "
-    },
-    {
-      "id": 1738521549364,
-      "title": "פיתות בצל",
-      "description": "פיתות קלות להכנה וטעימות במיוחד!!",
-      "authorId": "1738521374114",
-      "ingredients": [
-        "קילו קמח",
-        "חצי כוס שמן",
-        "חצי כוס סוכר",
-        "2 כפות מלח",
-        "2 כפות שמרים",
-        "4 1/2 כוסות מים פושרים"
-      ],
-      "instructions": "הכניסי את החומרים \nהתפיחי 20 דק' לא חובה\nתאפי 15-20 דק'\nבתאבון!"
     }
   ]
 }
